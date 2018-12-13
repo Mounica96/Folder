@@ -1,0 +1,119 @@
+ class Program
+    {
+        static void Main(string[] args)
+        {
+            //ArrayList a = new ArrayList();
+            EmployeeDAL ed = new EmployeeDAL();
+            EmployeeCollections objData = new EmployeeCollections();
+           ed.addEmployee(new EmployeeCollections() { empId = 100, empName = "Smith",salary=20000 });
+            ed.addEmployee(new EmployeeCollections() { empId = 101, empName = "John" ,salary=50000});
+            ed.addEmployee(new EmployeeCollections() { empId = 102, empName = "Anu", salary = 45000 });
+            ed.Display();
+            ed.searchEmployee(100);
+            ed.deleteEmployee(101);
+            ed.getAllEmployee();
+            }}
+            
+             class EmployeeCollections
+    {
+       
+        public string empName { get; set; }
+      public  int empId { get; set; }
+    public  double salary{ get; set; }
+    }
+    
+     class EmployeeDAL
+    {
+
+        ArrayList obj = new ArrayList();
+
+        public bool addEmployee(EmployeeCollections ec) {
+        int i= obj.Add(ec);
+            if (i < 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+    }
+        public void Display()
+        {
+            IEnumerator e = obj.GetEnumerator();
+            while (e.MoveNext())
+            {
+                EmployeeCollections objEmp = e.Current as EmployeeCollections;
+                Console.WriteLine(objEmp.empId + " " + objEmp.empName + " " + objEmp.salary);
+                Console.WriteLine();
+            }
+        }
+        public bool deleteEmployee(int id)
+        {
+            int i ;
+            bool isDeleted = false;
+            for (i = 0; i < obj.Count; i++) {
+                EmployeeCollections e = obj[i] as EmployeeCollections;
+                if (e.empId == id)
+                { 
+                   obj.RemoveAt(i);
+                    isDeleted = true;
+                    Console.WriteLine("Element removed is :"+e.empName);
+                    Console.WriteLine(  );
+                }
+            }
+            return isDeleted;
+        }
+        string str = "";
+        public string searchEmployee(int id)
+        {
+
+            for (int i = 0; i < obj.Count; i++)
+            {
+                EmployeeCollections e = obj[i] as EmployeeCollections;
+              
+                if (e.empId == id)
+                {
+                    str = e.empName;
+                    Console.WriteLine("Element found is :" + e.empName);
+                }
+
+            }
+            Console.WriteLine();
+
+            return str;
+
+        }
+        public void Display1()
+        {
+            IEnumerator e = obj.GetEnumerator();
+            while (e.MoveNext())
+            {
+                EmployeeCollections objEmp = e.Current as EmployeeCollections;
+                Console.WriteLine(objEmp.empId+" "+ objEmp.empName+" "+objEmp.salary);
+            }
+            Console.WriteLine();
+
+        }
+        public EmployeeCollections[] getAllEmployee()
+        {
+            EmployeeCollections[] emp = { };
+            IEnumerator e = obj.GetEnumerator();
+            while (e.MoveNext())
+            {
+                EmployeeCollections objEmp = e.Current as EmployeeCollections;
+                Console.WriteLine(objEmp.empId + " " + objEmp.empName + " " + objEmp.salary);
+
+            }
+            Console.WriteLine();
+
+            return emp;
+
+        }
+
+
+
+    }
+}
+
+            

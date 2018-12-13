@@ -1,0 +1,45 @@
+ class EmpList
+    {
+        static void Main(string[] args)
+        {
+            List<int> objIntList = new List<int>();
+            for(int i=0;i<10;i++)
+                objIntList.Add(i);
+
+            for (int i = 0; i < 10; i++)
+                objIntList[i] = objIntList[i] * 2;
+
+            foreach(var item in objIntList)
+                Console.WriteLine(item);
+            }}
+            
+             class GenericMath<T>
+    {
+        public T Add(T a, T b)
+        {
+            dynamic firstValue = a;
+            dynamic secondValue = b;
+            dynamic result = firstValue + secondValue;
+            return result;
+        }
+
+        public dynamic DynamicAdd(dynamic a, dynamic b)
+        {
+            return (a + b);
+        }
+    }
+    
+     class Program
+    {
+        static void Main(string[] args)
+        {
+            GenericMath<int> obj = new GenericMath<int>();
+            Console.WriteLine(obj.Add(10, 20));
+
+            GenericMath<double> objDouble = new GenericMath<double>();
+            Console.WriteLine(objDouble.Add(1.23,2.34));
+
+            GenericMath<int> objDynamic = new GenericMath<int>();            
+        }
+
+            

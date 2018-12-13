@@ -1,0 +1,21 @@
+class HashtableDemo
+    {
+        static void Main(string[] args)
+        {
+            Hashtable obj = new Hashtable();
+            obj.Add(1001, "Smith");
+            obj.Add(1002, "John");
+            obj.Add(1003, "Scott");
+            obj.Add(1004, "Tiger");
+            obj.Add(1005, "Allen");
+            obj.Add(1001, "John Smith");
+            IEnumerator e=obj.GetEnumerator();
+
+            while (e.MoveNext())
+            {
+                System.Collections.DictionaryEntry entry = (DictionaryEntry)e.Current;
+                Console.WriteLine(entry.Key + ":" + entry.Value);
+            }
+
+            Console.WriteLine(obj.ContainsKey(1000));
+        }

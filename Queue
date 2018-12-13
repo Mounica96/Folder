@@ -1,0 +1,21 @@
+class QueueDemo
+    {
+        static void Main(string[] args)
+        {
+             Queue objQueue = new Queue();
+
+            objQueue.Enqueue(10);
+            objQueue.Enqueue(1000);
+            objQueue.Enqueue(10000);
+
+            IEnumerator e = objQueue.GetEnumerator();
+            while (e.MoveNext())
+                Console.WriteLine(e.Current);
+            e.Reset();
+            Console.WriteLine("Element Removed:" + objQueue.Dequeue());
+            e = objQueue.GetEnumerator();
+            Console.WriteLine("Elements after removing");
+            while (e.MoveNext())
+                Console.WriteLine(e.Current);
+
+            Console.WriteLine("Element @ front:" + objQueue.Peek());

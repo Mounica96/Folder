@@ -1,0 +1,23 @@
+  class StackDemo
+    {
+        static void Main(string[] args)
+        {
+            Stack objStack = new Stack();
+
+            objStack.Push(10);
+            objStack.Push(1000);
+            objStack.Push(10000);
+
+            IEnumerator e = objStack.GetEnumerator();
+            while (e.MoveNext())
+                Console.WriteLine(e.Current);
+            e.Reset();
+            Console.WriteLine("Element Removed:"+objStack.Pop());
+            e = objStack.GetEnumerator();
+            Console.WriteLine("Elements after removing");
+            while(e.MoveNext())
+                Console.WriteLine(e.Current);
+
+            Console.WriteLine("Last element:"+objStack.Peek());
+        }
+    }
